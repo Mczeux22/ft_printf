@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_percent.c                                 :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: loicpapon <loicpapon@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/22 20:47:12 by loicpapon         #+#    #+#             */
-/*   Updated: 2024/11/23 13:56:58 by loicpapon        ###   ########.fr       */
+/*   Created: 2024/11/27 16:07:25 by loicpapon         #+#    #+#             */
+/*   Updated: 2024/11/28 16:54:28 by loicpapon        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libft.h"
 
-int	ft_print_percent(void)
+void	ft_putchar(char c)
 {
-	ft_putchar('%');
+	write(1, &c, 1);
 }

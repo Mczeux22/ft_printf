@@ -6,38 +6,15 @@
 /*   By: loicpapon <loicpapon@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 20:46:46 by loicpapon         #+#    #+#             */
-/*   Updated: 2024/11/23 14:44:45 by loicpapon        ###   ########.fr       */
+/*   Updated: 2024/12/01 17:13:57 by loicpapon        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-int	ft_print_unsigned(unsigned int n, t_flags *flags)
+void	ft_print_unsigned(unsigned int nb, int *len)
 {
-	int	count;
-	int	num_len;
-	int	padding;
-
-	count = 0;
-	num_len = ft_numlen(n);
-	padding = 0;
-	if (flags->precision > num_len)
-		num_len = flags->precision;
-	if (flags->width > num_len)
-	{
-		if (flags->minus)
-			count += print_width(flags->width, num_len, ' ');
-		else if (flags->zero)
-			count += print_width(flags->width, num_len, '0');
-		else
-			count += print_width(flags->width, num_len, ' ');
-	}
-	if (flags->precision > num_len)
-		padding = flags->precision - num_len;
-	count += print_width(padding, 0, '0');
-	count += ft_putnbr(n);
-	if (flags->minus && flags->width > num_len)
-		count += print_width(flags->width, num_len, ' ');
-	return (count);
+	if (nb >= 10)
+		ft_print_unsigned(nb / 10, len);
+	ft_print_char(nb % 10 + '0', len);
 }
-

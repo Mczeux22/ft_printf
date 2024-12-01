@@ -1,25 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_test.c                                        :+:      :+:    :+:   */
+/*   ft_print_ptr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: loicpapon <loicpapon@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/22 20:56:36 by loicpapon         #+#    #+#             */
-/*   Updated: 2024/11/22 21:06:28 by loicpapon        ###   ########.fr       */
+/*   Created: 2024/11/22 20:38:19 by loicpapon         #+#    #+#             */
+/*   Updated: 2024/12/01 17:04:09 by loicpapon        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-int	main(void)
+void	ft_print_ptr(size_t p, int *len)
 {
-	printf("%s\n", "Batterie de test");
+	char	str[25];
+	char	*base;
+	int		i;
 
-	printf("%s\n", "Test de printf %c pour un seul character");
-	ft_printf("%c\n", "A");
-	printf("%c\n", "A");
-	printf("%s\n", "Test de printf %s pour une chaîne characters");
-	ft_printf("%s\n", "Hello World");
-	printf("%s\n", "Hello world");
+	i = 0;
+	base = "0123456789abcdef";
+	write(1, "0x", 2);
+	(*len) += 2;
+	if (p == 0)
+	{
+		ft_print_char('0', len);
+		return ;
+	}
+	while (p != 0)
+	{
+		str[i] = base[p % 16];
+		p /= 16;
+		i++;
+	}
+	while (i--)
+		ft_print_char(str[i], len);
 }

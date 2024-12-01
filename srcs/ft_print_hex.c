@@ -6,42 +6,34 @@
 /*   By: loicpapon <loicpapon@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 20:37:16 by loicpapon         #+#    #+#             */
-/*   Updated: 2024/11/23 14:14:53 by loicpapon        ###   ########.fr       */
+/*   Updated: 2024/12/01 16:25:16 by loicpapon        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-int	ft_print_hex_with_flags(unsigned int n, char format, t_flags *flags)
+void	ft_print_hexa(unsigned int hexa, int *len, char format)
 {
-	int		count;
-	int		num_len;
+	char	tab[25];
 	char	*base;
+	int		i;
 
-	count = 0;
 	if (format == 'x')
 		base = "0123456789abcdef";
 	else if (format == 'X')
 		base = "0123456789ABCDEF";
-	else
-		return (0);
-	num_len = ft_hexlen(n);
-	if (flags->hash && n != 0)
-		num_len += 2;
-	if (!flags->minus && !flags->zero)
-		count += print_width(flags->width, num_len, ' ');
-	if (flags->hash && n != 0)
+	i = 0;
+	if (hexa == 0)
 	{
-		if (format == 'x')
-			count += write(1, "0x", 2);
-		else if (format == 'X')
-			count += write(1, "0X", 2);
+		ft_print_char('0', len);
+		return ;
 	}
-	if (flags->zero && !flags->minus)
-		count += print_width(flags->width, num_len, '0');
-	count += ft_putnbr_base(n, base);
-	if (flags->minus)
-		count += print_width(flags->width, num_len, ' ');
-	return (count);
+	while (hexa != 0)
+	{
+		tab[i] = base[hexa % 16];
+		hexa /= 16;
+		i++;
+	}
+	while (i--)
+		ft_print_char(tab[i], len);
 }
-
