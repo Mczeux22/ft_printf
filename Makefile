@@ -6,7 +6,7 @@
 #    By: loicpapon <loicpapon@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/23 19:15:20 by loicpapon         #+#    #+#              #
-#    Updated: 2024/11/27 12:23:49 by loicpapon        ###   ########.fr        #
+#    Updated: 2024/12/06 11:24:55 by loicpapon        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ LIBFTDIR = libft
 LIBFT = $(LIBFTDIR)/libft.a
 
 # Source and object files
-SRCS = $(wildcard $(SRCDIR)/*.c)
+SRCS = srcs/ft_print_char.c srcs/ft_print_hex.c srcs/ft_print_int.c srcs/ft_print_percent.c srcs/ft_print_ptr.c srcs/ft_print_str.c srcs/ft_print_unsigned_int.c \
+srcs/ft_printf.c
 OBJS = $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRCS))
 
 # Rules
