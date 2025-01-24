@@ -6,7 +6,7 @@
 /*   By: loicpapon <loicpapon@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 20:45:59 by loicpapon         #+#    #+#             */
-/*   Updated: 2025/01/24 11:31:24 by loicpapon        ###   ########.fr       */
+/*   Updated: 2025/01/24 15:30:03 by loicpapon        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_print_str(char *str, int *len)
 	i = 0;
 	if (!str)
 	{
-		ft_putstr("(nil)");
+		ft_putstr("(null)");
 		(*len) += 6;
 		return ;
 	}
