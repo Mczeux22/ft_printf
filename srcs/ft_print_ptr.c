@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_ptr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: loicpapon <loicpapon@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lopapon <lopapon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 15:23:28 by loicpapon         #+#    #+#             */
-/*   Updated: 2025/02/02 15:23:30 by loicpapon        ###   ########.fr       */
+/*   Updated: 2025/02/02 15:33:55 by lopapon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,6 @@ void	ft_pointeur(void *arg, int *len)
 	}
 	else
 	{
-		*len += write(1, "Nil", 3);
+		*len += write(1, "(nil)", 5);
 	}
 }
