@@ -25,10 +25,10 @@ int		ft_printf(const char *str, ...);
 void	ft_print_char(char c, int *len);
 void	ft_print_hexa(unsigned int hexa, int *len, char format);
 void	ft_print_int(int n, int *len);
-void	ft_print_ptr(size_t p, int *len);
 void	ft_print_unsigned(unsigned int nb, int *len);
 void	ft_print_str(char *str, int *len);
 void	ft_print_percent(void);
 void	ft_pointeur(void *arg, int *len);
 int		ft_putstr(char *str);
+
 #endif
