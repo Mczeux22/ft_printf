@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: loicpapon <loicpapon@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/22 20:38:19 by loicpapon         #+#    #+#             */
-/*   Updated: 2025/02/02 14:41:10 by loicpapon        ###   ########.fr       */
+/*   Created: 2025/02/02 15:23:28 by loicpapon         #+#    #+#             */
+/*   Updated: 2025/02/02 15:23:30 by loicpapon        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	hexa(long n, int maj)
 int	adr_hexa(unsigned long n)
 {
 	int		count;
-	char	base;
+	char	*base;
 
 	count = 1;
 	base = "0123456789abcdef";
@@ -54,8 +54,10 @@ void	ft_pointeur(void *arg, int *len)
 	if (arg != NULL)
 	{
 		*len += write(1, "0x", 2);
-		len = len + adr_hexa((unsigned long)arg);
+		*len += adr_hexa((unsigned long)arg);
 	}
 	else
-		*len += write(1, "(nil)", 5);
+	{
+		*len += write(1, "Nil", 3);
+	}
 }

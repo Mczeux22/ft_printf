@@ -6,7 +6,7 @@
 /*   By: loicpapon <loicpapon@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 19:44:18 by loicpapon         #+#    #+#             */
-/*   Updated: 2025/02/02 14:36:12 by loicpapon        ###   ########.fr       */
+/*   Updated: 2025/02/02 15:25:43 by loicpapon        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ void	ft_print_ptr(size_t p, int *len);
 void	ft_print_unsigned(unsigned int nb, int *len);
 void	ft_print_str(char *str, int *len);
 void	ft_print_percent(void);
-void	ft_pointeur(void arg, int *len);
+void	ft_pointeur(void *arg, int *len);
 int		ft_putstr(char *str);
 #endif
