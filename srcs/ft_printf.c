@@ -12,10 +12,10 @@
 
 #include "ft_printf.h"
 
-static void	ft_format(char s, va_list args, int len, int i)
+static void	ft_format(char s, va_list args, int *len, int *i)
 {
 	if (s == 's')
-		ft_print_str(va_arg(args, char ), len);
+		ft_print_str(va_arg(args, char *), len);
 	else if (s == 'd' || s == 'i')
 		ft_print_int(va_arg(args, int), len);
 	else if (s == 'u')
@@ -48,7 +48,7 @@ int	ft_printf(const char *string, ...)
 		if (string[i] == '%')
 		{
 			i++;
-			ft_format(string[i], &args, &length, &i);
+			ft_format(string[i], args, &length, &i);
 			i++;
 		}
 		else
