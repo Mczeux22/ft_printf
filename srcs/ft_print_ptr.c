@@ -6,7 +6,7 @@
 /*   By: loicpapon <loicpapon@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 20:38:19 by loicpapon         #+#    #+#             */
-/*   Updated: 2025/01/24 15:31:39 by loicpapon        ###   ########.fr       */
+/*   Updated: 2025/02/02 10:14:03 by loicpapon        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ void	ft_print_ptr(size_t p, int *len)
 	int		i;
 
 	i = 0;
+	if (p == 0)
+	{
+		(*len) += ft_putstr("Nil");
+		return ;
+	}
 	base = "0123456789abcdef";
 	write(1, "0x", 2);
 	(*len) += 2;
-	if (p == 0)
-	{
-		ft_putstr("nil");
-		return ;
-	}
 	while (p != 0)
 	{
 		str[i] = base[p % 16];
@@ -34,5 +34,8 @@ void	ft_print_ptr(size_t p, int *len)
 		i++;
 	}
 	while (i--)
-		ft_print_char(str[i], len);
+	{
+		write(1, &str[i], 1);
+		(*len)++;
+	}
 }
