@@ -6,32 +6,32 @@
 /*   By: loicpapon <loicpapon@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 19:44:15 by loicpapon         #+#    #+#             */
-/*   Updated: 2025/01/24 11:13:24 by loicpapon        ###   ########.fr       */
+/*   Updated: 2025/02/02 14:40:46 by loicpapon        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	ft_format(char s, va_list *args, int *len, int *i)
+static void	ft_format(char s, va_list args, int len, int i)
 {
 	if (s == 's')
-		ft_print_str(va_arg(*args, char *), len);
+		ft_print_str(va_arg(args, char ), len);
 	else if (s == 'd' || s == 'i')
-		ft_print_int(va_arg(*args, int), len);
+		ft_print_int(va_arg(args, int), len);
 	else if (s == 'u')
-		ft_print_unsigned(va_arg(*args, unsigned int), len);
+		ft_print_unsigned(va_arg(args, unsigned int), len);
 	else if (s == 'x')
-		ft_print_hexa(va_arg(*args, unsigned int), len, 'x');
+		ft_print_hexa(va_arg(args, unsigned int), len, 'x');
 	else if (s == 'X')
-		ft_print_hexa(va_arg(*args, unsigned int), len, 'X');
+		ft_print_hexa(va_arg(args, unsigned int), len, 'X');
 	else if (s == 'p')
-		ft_print_ptr(va_arg(*args, size_t), len);
+		ft_pointeur(va_arg(args, void *), len);
 	else if (s == 'c')
-		ft_print_char(va_arg(*args, int), len);
+		ft_print_char(va_arg(args, int), len);
 	else if (s == '%')
 		ft_print_char('%', len);
 	else
-		(*i)--;
+		(i)--;
 }
 
 int	ft_printf(const char *string, ...)

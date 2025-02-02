@@ -6,36 +6,56 @@
 /*   By: loicpapon <loicpapon@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 20:38:19 by loicpapon         #+#    #+#             */
-/*   Updated: 2025/02/02 10:14:03 by loicpapon        ###   ########.fr       */
+/*   Updated: 2025/02/02 14:41:10 by loicpapon        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_print_ptr(size_t p, int *len)
+int	hexa(long n, int maj)
 {
-	char	str[25];
+	int		count;
 	char	*base;
-	int		i;
 
-	i = 0;
-	if (p == 0)
+	count = 1;
+	if (maj == 1)
+		base = "0123456789ABCDEF";
+	else
+		base = "0123456789abcdef";
+	if (n >= 16)
 	{
-		(*len) += ft_putstr("Nil");
-		return ;
+		count = hexa(n / 16, maj);
+		n = n % 16;
+		count++;
 	}
+	write(1, &base[n], 1);
+	return (count);
+}
+
+int	adr_hexa(unsigned long n)
+{
+	int		count;
+	char	base;
+
+	count = 1;
 	base = "0123456789abcdef";
-	write(1, "0x", 2);
-	(*len) += 2;
-	while (p != 0)
+	if (n >= 16)
 	{
-		str[i] = base[p % 16];
-		p /= 16;
-		i++;
+		count = adr_hexa(n / 16);
+		n = n % 16;
+		count++;
 	}
-	while (i--)
+	write(1, &base[n], 1);
+	return (count);
+}
+
+void	ft_pointeur(void *arg, int *len)
+{
+	if (arg != NULL)
 	{
-		write(1, &str[i], 1);
-		(*len)++;
+		*len += write(1, "0x", 2);
+		len = len + adr_hexa((unsigned long)arg);
 	}
+	else
+		*len += write(1, "(nil)", 5);
 }
